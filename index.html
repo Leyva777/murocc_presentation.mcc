@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,22 @@
     <title>MUROCC | Soluciones en Renta de Andamios y Maquinaria</title>
     <link rel="stylesheet" href="css_styles.css">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="images/logo.svg" alt="MUROCC Logo" class="logo-img">
-                <span class="logo-text">MUROCC</span>
+                <img src="images/MUROCCLanding_page2.jpeg" alt="MUROCC Logo" class="logo-img">
+                <span class="logo-text">murocc</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#hero">Inicio</a></li>
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#catalog">Catálogo</a></li>
                 <li><a href="#contact">Contacto</a></li>
+                <!--<li><a href="https://www.facebook.com/share/1AvesdimhQ/?mibextid=wwXIfr" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/murocc_andamios?igsh=Y3R0cmthZWhpMzcw&utm_source=qr" target="_blank">Instagram</a></li>-->
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -31,47 +35,72 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
+        <div class="hero-carousel">
+            <img src="images/murocc1.jpg" alt="Proyecto MUROCC 1" class="hero-image">
+            <img src="images/murocc2.jpg" alt="Proyecto MUROCC 2" class="hero-image">
+            <img src="images/murocc3.png" alt="Proyecto MUROCC 3" class="hero-image">
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">MUROCC: Elevando tus proyectos con seguridad</h1>
-            <p class="hero-subtitle">Soluciones integrales en renta de andamios y maquinaria ligera</p>
+            <div class="hero-badge">MUROCC ANDAMIOS</div>
+            <h1 class="hero-title">¡A LA ALTURA DE TU PROYECTO!</h1>
+            <p class="hero-subtitle">Soluciones integrales en renta de andamios y maquinaria ligera para construcción
+            </p>
             <div class="hero-buttons">
-                <button class="btn btn-primary">Cotizar Ahora</button>
-                <button class="btn btn-secondary">Ver Catálogo</button>
+                <button class="btn btn-primary btn-large">Cotizar Ahora</button>
+                <button class="btn btn-secondary btn-large">Ver Catálogo</button>
             </div>
+        </div>
+        <div class="hero-carousel-controls">
+            <button class="carousel-dot active" data-slide="0"></button>
+            <button class="carousel-dot" data-slide="1"></button>
+            <button class="carousel-dot" data-slide="2"></button>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">Nuestra Historia</h2>
+            <div class="section-header">
+                <h2 class="section-title">Nuestra Historia</h2>
+                <p class="section-tagline">Experiencia y confianza en la industria</p>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>En MUROCC, somos líderes en la industria de la construcción con más de dos décadas de experiencia proporcionando soluciones confiables y eficientes. Nuestro compromiso es garantizar que cada proyecto tenga acceso a equipo de calidad superior, mantenido con rigor y disponible cuando más lo necesitas.</p>
-                    
-                    <p>Con tecnología propia y un equipo dedicado, realizamos mantenimiento constante a cada unidad. Nuestro sistema de monitoreo asegura que tu equipo esté siempre en óptimas condiciones, permitiéndote enfocarte en lo que importa: construir con confianza.</p>
+                    <p>En MUROCC, somos líderes en la industria de la construcción con más de dos décadas de experiencia
+                        proporcionando soluciones confiables y eficientes. Nuestro compromiso es garantizar que cada
+                        proyecto tenga acceso a equipo de calidad superior, mantenido con rigor y disponible cuando más
+                        lo necesitas.</p>
+
+                    <p>Con tecnología propia y un equipo dedicado, realizamos mantenimiento constante a cada unidad.
+                        Nuestro sistema de monitoreo asegura que tu equipo esté siempre en óptimas condiciones,
+                        permitiéndote enfocarte en lo que importa: construir con confianza.</p>
 
                     <div class="features">
                         <div class="feature-item">
                             <div class="feature-icon">✓</div>
                             <h3>Tecnología Propia</h3>
-                            <p>Sistemas de monitoreo y mantenimiento inteligente</p>
+                            <p>Sistemas de monitoreo y mantenimiento</p>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">✓</div>
-                            <h3>Disponibilidad 24/7</h3>
+                            <h3>Disponibilidad</h3>
                             <p>Equipo listo cuando lo necesites</p>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">✓</div>
                             <h3>Calidad Garantizada</h3>
-                            <p>Mantenimiento riguroso y certificado</p>
+                            <p>Mantenimiento riguroso y listo para operar</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <h3>Atención</h3>
+                            <p>Asistencia personalizada y la mejor disposición</p>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/estructura.jpg" alt="Estructura metálica MUROCC">
+                    <img src="images/estructura-metálica.jpg" alt="Estructura metálica MUROCC">
                 </div>
             </div>
         </div>
@@ -80,43 +109,47 @@
     <!-- Catalog Section -->
     <section id="catalog" class="catalog">
         <div class="container">
-            <h2 class="section-title">Nuestro Catálogo</h2>
-            <p class="section-subtitle">Equipo profesional para tus proyectos de construcción</p>
+            <div class="section-header">
+                <h2 class="section-title">Nuestro Catálogo</h2>
+                <p class="section-tagline">Equipo profesional para tus proyectos de construcción</p>
+            </div>
 
             <div class="catalog-grid">
                 <!-- Andamios Card -->
                 <div class="catalog-card">
                     <div class="catalog-image">
-                        <img src="images/andamios.jpg" alt="Andamios y Puntales MUROCC">
+                        <img src="images/andamios-y-puntales.jpg" alt="Andamios y Puntales MUROCC">
                     </div>
                     <div class="catalog-content">
                         <h3>Andamios y Puntales</h3>
                         <ul class="product-list">
-                            <li>✓ Andamios normales</li>
-                            <li>✓ Puntales metálicos</li>
-                            <li>✓ Seguros y resistentes</li>
-                            <li>✓ Crucetas y tablones</li>
+                            <li> Diferentes tipos de andamios</li>
+                            <li> Puntales metálicos</li>
+                            <li> Seguros y resistentes</li>
+                            <li> Crucetas y tablones</li>
                         </ul>
-                        <p class="product-description">Estructuras diseñadas para máxima seguridad y resistencia en cualquier proyecto.</p>
-                        <button class="btn btn-primary btn-small">Ver Detalles</button>
+                        <p class="product-description">Estructuras diseñadas para máxima seguridad y resistencia en
+                            cualquier proyecto.</p>
+                        <button class="btn btn-primary btn-small" data-product="andamios">Ver Detalles</button>
                     </div>
                 </div>
 
                 <!-- Maquinaria Card -->
                 <div class="catalog-card">
                     <div class="catalog-image">
-                        <img src="images/maquinaria.jpg" alt="Maquinaria Ligera MUROCC">
+                        <img src="images/maquinaria-ligera.jpg" alt="Maquinaria Ligera MUROCC">
                     </div>
                     <div class="catalog-content">
                         <h3>Maquinaria Ligera</h3>
                         <ul class="product-list">
-                            <li>✓ Revolvedoras de concreto</li>
-                            <li>✓ Bailarinas</li>
-                            <li>✓ Patines hidráulicos</li>
-                            <li>✓ Equipo en excelente estado</li>
+                            <li> Revolvedoras de concreto</li>
+                            <li> Bailarinas</li>
+                            <li> Patines hidráulicos</li>
+                            <li> Equipo en excelente estado</li>
                         </ul>
-                        <p class="product-description">Maquinaria versátil y confiable para acelerar tus procesos constructivos.</p>
-                        <button class="btn btn-primary btn-small">Ver Detalles</button>
+                        <p class="product-description">Maquinaria versátil y confiable para acelerar tus procesos
+                            constructivos.</p>
+                        <button class="btn btn-primary btn-small" data-product="maquinaria">Ver Detalles</button>
                     </div>
                 </div>
             </div>
@@ -124,7 +157,7 @@
             <div class="cta-section">
                 <h3>¿Necesitas más información?</h3>
                 <p>Cotiza tu equipo ahora y obtén disponibilidad inmediata</p>
-                <button class="btn btn-secondary btn-large">Ver Catálogo Completo</button>
+                <button class="btn btn-secondary btn-large">Pregunta por el Catálogo Completo</button>
             </div>
         </div>
     </section>
@@ -132,39 +165,96 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contáctanos</h2>
+            <div class="section-header">
+                <h2 class="section-title">Contáctanos</h2>
+                <p class="section-tagline">Ahora que aprendiste de nosotros, no dudes en contactarnos</p>
+            </div>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>¡Renta con Confianza!</h3>
                     <p>Nuestro equipo está listo para ayudarte con tu próximo proyecto</p>
                     <div class="contact-details">
-                        <p><strong>📞 Teléfono:</strong> +1 (555) XXX-XXXX</p>
-                        <p><strong>📧 Email:</strong> info@murocc.com</p>
-                        <p><strong>📍 Ubicación:</strong> Ciudad, País</p>
+                        <p><strong> Teléfono:</strong> +52 33 3125 9140 </p>
+                        <p><strong> Email:</strong> murocc.andamios1@gmail.com </p>
+                        <p><strong> Ubicación:</strong> Prol. Av Guadalupe #1485 local 4
+                            Paraísos del Colli
+                            C.p. 45069
+                            Zapopan, Jalisco
+                            México</p>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Tu nombre" required>
-                    <input type="email" placeholder="Tu correo" required>
-                    <textarea placeholder="Tu consulta" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                </form>
+                <div class="whatsapp-contact">
+                    <div class="whatsapp-icon">💬</div>
+                    <h4>WhatsApp</h4>
+                    <p>Envía un mensaje directo a nuestro equipo y obtén respuesta inmediata</p>
+                    <a href="https://wa.me/message/TTIZVU2WMQ4VP1" class="btn btn-whatsapp" target="_blank">
+                        Envíanos un mensaje
+                    </a>
+                </div>
             </div>
+            <p><br></p>
+            <form class="contact-form" id="contactFormMain" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="12dbebc9-8fc7-4568-bb58-286792d0fae3">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu correo" required>
+                <textarea name="message" placeholder="Tu consulta" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                <div id="contact_status"></div>
+            </form>
+
+
         </div>
     </section>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalProductImage" src="" alt="Producto">
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalProductTitle"></h2>
+                    <p id="modalProductDescription"></p>
+
+                    <div class="modal-features">
+                        <h3>Características</h3>
+                        <ul id="modalProductFeatures"></ul>
+                    </div>
+
+                    <div class="modal-contact-form">
+                        <h3>Cotiza Este Producto</h3>
+                        <form class="product-contact-form" id="productContactFormMain"
+                            action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="12dbebc9-8fc7-4568-bb58-286792d0fae3">
+                            <input type="text" name="nombre" placeholder="Tu nombre" required>
+                            <input type="email" name="email" placeholder="Tu correo" required>
+                            <textarea name="message" placeholder="Consulta específica sobre este producto" rows="4"
+                                required></textarea>
+                            <input type="hidden" name="producto" id="hiddenProductName">
+                            <button type="submit" class="btn btn-primary">Enviar Cotización</button>
+                            <div id="product_status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MUROCC - Andamios y Estructura. Todos los derechos reservados.</p>
             <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">LinkedIn</a>
+                <a href="https://www.facebook.com/share/1AvesdimhQ/?mibextid=wwXIfr">Facebook</a>
+                <a href="https://www.instagram.com/murocc_andamios?igsh=Y3R0cmthZWhpMzcw&utm_source=qr">Instagram</a>
+
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js_script.js"></script>
 </body>
+
 </html>
