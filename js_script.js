@@ -8,7 +8,7 @@ function showSlide(index) {
         img.classList.remove('active');
         carouselDots[i].classList.remove('active');
     });
-    
+
     heroImages[index].classList.add('active');
     carouselDots[index].classList.add('active');
 }
@@ -87,15 +87,15 @@ function saveMessageLog(email, log) {
 function canSendMessage(email) {
     const log = getMessageLog(email);
     const hoursPassed = (Date.now() - log.lastReset) / (1000 * 60 * 60);
-    
+
     if (hoursPassed >= RESET_HOURS) {
         log.count = 0;
         log.lastReset = Date.now();
         saveMessageLog(email, log);
     }
-    
-    return log.count < MAX_MESSAGES ? 
-        { allowed: true, remaining: MAX_MESSAGES - log.count } : 
+
+    return log.count < MAX_MESSAGES ?
+        { allowed: true, remaining: MAX_MESSAGES - log.count } :
         { allowed: false, remaining: 0, resetIn: Math.ceil(RESET_HOURS - hoursPassed) };
 }
 
@@ -112,21 +112,21 @@ if (contactFormMain) {
     contactFormMain.addEventListener('submit', (e) => {
         const emailInput = contactFormMain.querySelector('input[name="email"]');
         const statusDiv = document.getElementById('contact_status');
-        
+
         const email = emailInput.value.trim();
-        
+
         e.preventDefault(); // Prevenir redirección nativa
-        
+
         // Verificar límite de mensajes
         const canSend = canSendMessage(email);
         if (!canSend.allowed) {
             statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 14px; margin-top: 10px;"> Límite alcanzado (máx 3 mensajes por 24h). Intenta nuevamente en aproximadamente ${canSend.resetIn} horas.</p>`;
             return;
         }
-        
+
         // Si puede enviar, mostrar mensaje
         statusDiv.innerHTML = '<p style="color: #FFB74D; font-size: 14px; margin-top: 10px;"> Enviando mensaje...</p>';
-        
+
         // Enviar datos a Formspree vía AJAX
         fetch(contactFormMain.action, {
             method: 'POST',
@@ -159,9 +159,17 @@ if (contactFormMain) {
 
 // CTA Buttons
 document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        if (this.textContent.includes('Cotizar') || this.textContent.includes('Ver Catálogo') || this.textContent.includes('Pregunta por el Catálogo Completo')) {
+    btn.addEventListener('click', function () {
+        if (this.textContent.includes('Cotizar') || this.textContent.includes('Pregunta por el Catálogo Completo')) {
             const target = document.querySelector('#contact');
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+document.querySelectorAll('.btn-secondary').forEach(btn => {
+    btn.addEventListener('click', function () {
+        if (this.textContent.includes('Ver Catálogo')) {
+            const target = document.querySelector('#catalog');
             if (target) target.scrollIntoView({ behavior: 'smooth' });
         }
     });
@@ -193,7 +201,7 @@ const productData = {
         description: 'Estructuras de andamios metálicos diseñadas para máxima seguridad y resistencia en proyectos de construcción de cualquier escala. Cumple con los estándares internacionales de seguridad.',
         image: 'images/andamios-y-puntales.jpg',
         features: [
-            ' Andamios normales de alta resistencia',
+            ' Diferentes tipos de andamios de alta resistencia',
             ' Puntales metálicos ajustables',
             ' Seguros y resistentes para cargas pesadas',
             ' Crucetas y tablones de metal para mayor estabilidad',
@@ -218,19 +226,19 @@ const productData = {
 
 // Open modal with product details
 document.querySelectorAll('[data-product]').forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
         const productKey = this.getAttribute('data-product');
         const product = productData[productKey];
-        
+
         if (product) {
             document.getElementById('modalProductTitle').textContent = product.title;
             document.getElementById('modalProductDescription').textContent = product.description;
             document.getElementById('modalProductImage').src = product.image;
             document.getElementById('modalProductImage').alt = product.title;
-            
+
             // Agregar nombre del producto al formulario oculto
             document.getElementById('hiddenProductName').value = product.title;
-            
+
             // Populate features list
             const featuresList = document.getElementById('modalProductFeatures');
             featuresList.innerHTML = '';
@@ -239,7 +247,7 @@ document.querySelectorAll('[data-product]').forEach(btn => {
                 li.textContent = feature;
                 featuresList.appendChild(li);
             });
-            
+
             productModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -255,14 +263,14 @@ function closeModal() {
 closeModalBtn.addEventListener('click', closeModal);
 
 // Close modal when clicking outside of it
-productModal.addEventListener('click', function(e) {
+productModal.addEventListener('click', function (e) {
     if (e.target === productModal) {
         closeModal();
     }
 });
 
 // Close modal with Escape key
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && productModal.classList.contains('active')) {
         closeModal();
     }
@@ -274,21 +282,21 @@ if (productContactFormMain) {
     productContactFormMain.addEventListener('submit', (e) => {
         const emailInput = productContactFormMain.querySelector('input[name="email"]');
         const statusDiv = document.getElementById('product_status');
-        
+
         const email = emailInput.value.trim();
-        
+
         e.preventDefault(); // Prevenir redirección nativa
-        
+
         // Verificar límite de mensajes
         const canSend = canSendMessage(email);
         if (!canSend.allowed) {
-            statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 13px; margin-top: 10px;">❌ Límite alcanzado (máx 3 mensajes por 24h). Intenta nuevamente en aproximadamente ${canSend.resetIn} horas.</p>`;
+            statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 13px; margin-top: 10px;"> Límite alcanzado (máx 3 mensajes por 24h). Intenta nuevamente en aproximadamente ${canSend.resetIn} horas.</p>`;
             return;
         }
-        
+
         // Si puede enviar, mostrar mensaje
-        statusDiv.innerHTML = '<p style="color: #FFB74D; font-size: 13px; margin-top: 10px;">⏳ Enviando cotización...</p>';
-        
+        statusDiv.innerHTML = '<p style="color: #FFB74D; font-size: 13px; margin-top: 10px;"> Enviando cotización...</p>';
+
         // Enviar datos a Formspree vía AJAX
         fetch(productContactFormMain.action, {
             method: 'POST',
@@ -300,19 +308,19 @@ if (productContactFormMain) {
             if (response.ok) {
                 recordMessage(email);
                 const remaining = canSendMessage(email).remaining;
-                statusDiv.innerHTML = `<p style="color: #4CAF50; font-size: 13px; margin-top: 10px;">✅ ¡Cotización enviada! (Restantes: ${remaining})</p>`;
+                statusDiv.innerHTML = `<p style="color: #4CAF50; font-size: 13px; margin-top: 10px;"> ¡Cotización enviada! (Restantes: ${remaining})</p>`;
                 productContactFormMain.reset();
             } else {
                 response.json().then(data => {
                     if (Object.hasOwn(data, 'errors')) {
-                        statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 13px; margin-top: 10px;">❌ Error: ${data.errors.map(error => error.message).join(", ")}</p>`;
+                        statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 13px; margin-top: 10px;"> Error: ${data.errors.map(error => error.message).join(", ")}</p>`;
                     } else {
-                        statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 13px; margin-top: 10px;">❌ Hubo un problema al enviar.</p>`;
+                        statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 13px; margin-top: 10px;"> Hubo un problema al enviar.</p>`;
                     }
                 });
             }
         }).catch(error => {
-            statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 13px; margin-top: 10px;">❌ Error de conexión al enviar.</p>`;
+            statusDiv.innerHTML = `<p style="color: #FF6B6B; font-size: 13px; margin-top: 10px;"> Error de conexión al enviar.</p>`;
         });
     });
 }
@@ -333,14 +341,14 @@ if (waButton) {
         .then(data => {
             const currentIP = data.ip;
             const clickedIP = localStorage.getItem('wa_clicked_ip');
-            
+
             if (clickedIP === currentIP) {
                 disableWhatsAppBtn();
             }
 
-            waButton.addEventListener('click', function(e) {
+            waButton.addEventListener('click', function (e) {
                 const storedIP = localStorage.getItem('wa_clicked_ip');
-                
+
                 if (storedIP === currentIP) {
                     e.preventDefault();
                     alert('Ya has iniciado una conversación de WhatsApp desde esta red.');
@@ -356,7 +364,7 @@ if (waButton) {
             if (localStorage.getItem('wa_clicked_fallback')) {
                 disableWhatsAppBtn();
             }
-            waButton.addEventListener('click', function() {
+            waButton.addEventListener('click', function () {
                 localStorage.setItem('wa_clicked_fallback', 'true');
                 setTimeout(disableWhatsAppBtn, 1000);
             });
