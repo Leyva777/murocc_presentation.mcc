@@ -137,19 +137,96 @@
                 </div>
 
                 <!-- Maquinaria Card -->
-                <div class="catalog-card">
-                    <div class="catalog-image">
-                        <img src="images/maquinaria-ligera.jpg" alt="Maquinaria Ligera MUROCC">
+                <div class="catalog-card machinery-card">
+                    <div class="catalog-image gallery-image-container">
+                        <img id="maquinariaMainImg" src="images/maquinaria-1.jpeg"
+                            alt="Maquinaria Ligera MUROCC - Equipo 1">
+                        <span class="gallery-badge" id="maquinariaBadge">1 / 8</span>
+                        <div class="gallery-caption" id="maquinariaImgCaption">Revolvedoras de concreto</div>
+                        <button class="gallery-nav gallery-prev" aria-label="Imagen anterior"
+                            title="Anterior">&#10094;</button>
+                        <button class="gallery-nav gallery-next" aria-label="Imagen siguiente"
+                            title="Siguiente">&#10095;</button>
                     </div>
+
+                    <!-- Thumbnails Strip -->
+                    <div class="maquinaria-thumbnails">
+                        <div class="thumbnail-item active" data-index="0" data-src="images/maquinaria-1.jpeg"
+                            data-title="Revolvedoras de concreto">
+                            <img src="images/maquinaria-1.jpeg" alt="Revolvedoras de concreto">
+                            <span class="thumb-badge">1</span>
+                        </div>
+                        <div class="thumbnail-item" data-index="1" data-src="images/maquinaria-2.jpeg"
+                            data-title="Bailarinas de compactación">
+                            <img src="images/maquinaria-2.jpeg" alt="Bailarinas de compactación">
+                            <span class="thumb-badge">2</span>
+                        </div>
+                        <div class="thumbnail-item" data-index="2" data-src="images/maquinaria-3.jpeg"
+                            data-title="Patines hidráulicos">
+                            <img src="images/maquinaria-3.jpeg" alt="Patines hidráulicos">
+                            <span class="thumb-badge">3</span>
+                        </div>
+                        <div class="thumbnail-item" data-index="3" data-src="images/maquinaria-4.jpeg"
+                            data-title="Placas vibratorias">
+                            <img src="images/maquinaria-4.jpeg" alt="Placas vibratorias">
+                            <span class="thumb-badge">4</span>
+                        </div>
+                        <div class="thumbnail-item" data-index="4" data-src="images/maquinaria-5.jpeg"
+                            data-title="Cortadoras de concreto">
+                            <img src="images/maquinaria-5.jpeg" alt="Cortadoras de concreto">
+                            <span class="thumb-badge">5</span>
+                        </div>
+                        <div class="thumbnail-item" data-index="5" data-src="images/maquinaria-6.jpeg"
+                            data-title="Vibradores de concreto">
+                            <img src="images/maquinaria-6.jpeg" alt="Vibradores de concreto">
+                            <span class="thumb-badge">6</span>
+                        </div>
+                        <div class="thumbnail-item" data-index="6" data-src="images/maquinaria-7.jpeg"
+                            data-title="Generadores eléctricos">
+                            <img src="images/maquinaria-7.jpeg" alt="Generadores eléctricos">
+                            <span class="thumb-badge">7</span>
+                        </div>
+                        <div class="thumbnail-item" data-index="7" data-src="images/maquinaria-8.jpeg"
+                            data-title="Bombas de agua y achique">
+                            <img src="images/maquinaria-8.jpeg" alt="Bombas de agua y achique">
+                            <span class="thumb-badge">8</span>
+                        </div>
+                    </div>
+
                     <div class="catalog-content">
-                        <h3>Maquinaria Ligera</h3>
-                        <ul class="product-list">
-                            <li> Revolvedoras de concreto</li>
-                            <li> Bailarinas</li>
-                            <li> Patines hidráulicos</li>
+                        <div class="catalog-header-flex">
+                            <h3>Maquinaria Ligera</h3>
+                            <span class="equipment-count-tag"></span>
+                        </div>
+                        <ul class="product-list product-list-interactive">
+                            <li class="machinery-item active" data-index="0">
+                                <span class="item-num">1</span> Vibradores de concreto, gas
+                            </li>
+                            <li class="machinery-item" data-index="1">
+                                <span class="item-num">2</span> Bailarinas de compactación
+                            </li>
+                            <li class="machinery-item" data-index="2">
+                                <span class="item-num">3</span> Vibradores de concreto, eléctrico
+                            </li>
+                            <li class="machinery-item" data-index="3">
+                                <span class="item-num">4</span> Martillo Demoledor 30kg
+                            </li>
+                            <li class="machinery-item" data-index="4">
+                                <span class="item-num">5</span> Martillo Demoledor 5kg
+                            </li>
+                            <li class="machinery-item" data-index="5">
+                                <span class="item-num">6</span> Martillo Demoledor 17kg
+                            </li>
+                            <li class="machinery-item" data-index="6">
+                                <span class="item-num">7</span> Revolvedoras
+                            </li>
+                            <li class="machinery-item" data-index="7">
+                                <span class="item-num">8</span> Generador de luz 9000W
+                            </li>
                         </ul>
-                        <p class="product-description">Maquinaria versátil y confiable para acelerar tus procesos
-                            constructivos.</p>
+                        <p class="product-description">Catálogo completo con 8 soluciones de maquinaria ligera
+                            versátiles, mantenidas en óptimas condiciones operativas para maximizar el rendimiento en tu
+                            obra.</p>
                         <button class="btn btn-primary btn-small" data-product="maquinaria">Ver Detalles</button>
                     </div>
                 </div>
@@ -213,7 +290,10 @@
             <span class="close-modal">&times;</span>
             <div class="modal-body">
                 <div class="modal-image">
-                    <img id="modalProductImage" src="" alt="Producto">
+                    <div class="modal-main-view">
+                        <img id="modalProductImage" src="" alt="Producto">
+                    </div>
+                    <div class="modal-gallery-grid" id="modalGalleryGrid"></div>
                 </div>
                 <div class="modal-details">
                     <h2 id="modalProductTitle"></h2>

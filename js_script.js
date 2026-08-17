@@ -211,18 +211,123 @@ const productData = {
     },
     maquinaria: {
         title: 'Maquinaria Ligera',
-        description: 'Equipos versátiles y confiables para acelerar tus procesos constructivos. Toda la maquinaria se mantiene en excelente estado operativo para garantizar el máximo rendimiento en tu proyecto.',
-        image: 'images/maquinaria-ligera.jpg',
+        description: 'Contamos con 8 líneas principales de maquinaria ligera versátil y confiable para acelerar tus procesos constructivos. Toda la maquinaria recibe mantenimiento preventivo constante para garantizar máxima eficiencia y seguridad.',
+        image: 'images/maquinaria-1.jpeg',
         features: [
-            ' Revolvedoras de concreto automáticas',
-            ' Bailarinas para compactación de terreno',
-            ' Patines hidráulicos para movimiento de carga',
-            ' Equipo en excelente estado operativo',
-            ' Operación sencilla y segura',
-            ' Disponibilidad inmediata'
+            '1. Vibradores de concreto, gas',
+            '2. Bailarinas de compactación',
+            '3. Vibradores de concreto, eléctrico',
+            '4. Martillo Demoledor 30kg',
+            '5. Martillo Demoledor 5kg',
+            '6. Martillo Demoledor 17kg',
+            '7. Revolvedoras',
+            '8. Generador de luz 9000W',
+            ' Disponibilidad inmediata para renta',
         ]
     }
 };
+
+// Interactive Machinery Gallery Handler
+const machineryGalleryData = [
+    { src: 'images/maquinaria-1.jpeg', title: 'Revolvedoras de concreto' },
+    { src: 'images/maquinaria-2.jpeg', title: 'Bailarinas de compactación' },
+    { src: 'images/maquinaria-3.jpeg', title: 'Patines hidráulicos' },
+    { src: 'images/maquinaria-4.jpeg', title: 'Placas vibratorias' },
+    { src: 'images/maquinaria-5.jpeg', title: 'Cortadoras de concreto' },
+    { src: 'images/maquinaria-6.jpeg', title: 'Vibradores de concreto' },
+    { src: 'images/maquinaria-7.jpeg', title: 'Generadores eléctricos' },
+    { src: 'images/maquinaria-8.jpeg', title: 'Bombas de agua y achique' }
+];
+
+let currentMachineryIndex = 0;
+
+function updateMachineryGallery(index) {
+    if (index < 0) index = machineryGalleryData.length - 1;
+    if (index >= machineryGalleryData.length) index = 0;
+    currentMachineryIndex = index;
+
+    const data = machineryGalleryData[currentMachineryIndex];
+    const mainImg = document.getElementById('maquinariaMainImg');
+    const badge = document.getElementById('maquinariaBadge');
+    const caption = document.getElementById('maquinariaImgCaption');
+
+    if (mainImg) {
+        mainImg.style.opacity = '0.3';
+        setTimeout(() => {
+            mainImg.src = data.src;
+            mainImg.alt = `Maquinaria Ligera MUROCC - ${data.title}`;
+            mainImg.style.opacity = '1';
+        }, 150);
+    }
+
+    if (badge) {
+        badge.textContent = `${currentMachineryIndex + 1} / ${machineryGalleryData.length}`;
+    }
+
+    if (caption) {
+        caption.textContent = data.title;
+    }
+
+    // Update active thumbnail
+    const thumbnails = document.querySelectorAll('.thumbnail-item');
+    thumbnails.forEach((thumb, i) => {
+        if (i === currentMachineryIndex) {
+            thumb.classList.add('active');
+            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+            thumb.classList.remove('active');
+        }
+    });
+
+    // Update active product list item
+    const listItems = document.querySelectorAll('.machinery-item');
+    listItems.forEach((item, i) => {
+        if (i === currentMachineryIndex) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+}
+
+// Gallery Nav buttons
+const prevBtn = document.querySelector('.gallery-prev');
+const nextBtn = document.querySelector('.gallery-next');
+
+if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateMachineryGallery(currentMachineryIndex - 1);
+    });
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateMachineryGallery(currentMachineryIndex + 1);
+    });
+}
+
+// Thumbnails click handlers
+document.querySelectorAll('.thumbnail-item').forEach(thumb => {
+    thumb.addEventListener('click', function () {
+        const idx = parseInt(this.getAttribute('data-index'), 10);
+        updateMachineryGallery(idx);
+    });
+});
+
+// Interactive product list item click/hover handlers
+document.querySelectorAll('.machinery-item').forEach(item => {
+    item.addEventListener('click', function () {
+        const idx = parseInt(this.getAttribute('data-index'), 10);
+        updateMachineryGallery(idx);
+    });
+
+    item.addEventListener('mouseenter', function () {
+        const idx = parseInt(this.getAttribute('data-index'), 10);
+        updateMachineryGallery(idx);
+    });
+});
 
 // Open modal with product details
 document.querySelectorAll('[data-product]').forEach(btn => {
@@ -247,6 +352,34 @@ document.querySelectorAll('[data-product]').forEach(btn => {
                 li.textContent = feature;
                 featuresList.appendChild(li);
             });
+
+            // Populate modal photo gallery grid for Maquinaria
+            const modalGalleryGrid = document.getElementById('modalGalleryGrid');
+            if (modalGalleryGrid) {
+                modalGalleryGrid.innerHTML = '';
+                if (productKey === 'maquinaria') {
+                    machineryGalleryData.forEach((item, index) => {
+                        const thumbBtn = document.createElement('div');
+                        thumbBtn.className = `modal-thumb-btn ${index === 0 ? 'active' : ''}`;
+                        thumbBtn.setAttribute('title', item.title);
+                        thumbBtn.innerHTML = `<img src="${item.src}" alt="${item.title}">`;
+
+                        thumbBtn.addEventListener('click', function () {
+                            document.querySelectorAll('.modal-thumb-btn').forEach(btn => btn.classList.remove('active'));
+                            this.classList.add('active');
+                            const modalImg = document.getElementById('modalProductImage');
+                            modalImg.style.opacity = '0.3';
+                            setTimeout(() => {
+                                modalImg.src = item.src;
+                                modalImg.alt = item.title;
+                                modalImg.style.opacity = '1';
+                            }, 150);
+                        });
+
+                        modalGalleryGrid.appendChild(thumbBtn);
+                    });
+                }
+            }
 
             productModal.classList.add('active');
             document.body.style.overflow = 'hidden';
